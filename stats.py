@@ -11,3 +11,16 @@ def get_num_letters(text):
         else:
             letter_count[char] = 1
     return letter_count
+
+def dictionary_to_list(totals):
+    list_of_dictionaries = []
+    for char, count in totals.items():
+        list_of_dictionaries.append({"char": char, "count": count})
+    
+    def sort_on(dict):
+        return dict["count"]
+    
+    list_of_dictionaries.sort(reverse=True, key=sort_on)
+    
+    return list_of_dictionaries
+
