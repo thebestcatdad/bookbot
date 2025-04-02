@@ -6,15 +6,25 @@ def main():
     book_path = "books/frankenstein.txt"
     text = get_book_text(book_path)
     count_words = get_num_words(text)
-    print(f"{count_words} words found in the document")
     count_letters = get_num_letters(text)
-    print(count_letters)
-    print("=========")
-    temp_list = dictionary_to_list(count_letters)
-    print(temp_list)
+    sorted_list = dictionary_to_list(count_letters)
+    print_results(book_path, count_words, sorted_list)
 
 def get_book_text(path):
      with open(path) as f:
         return f.read()
+     
+def print_results(book_path, count_words, sorted_list):
+    print("============ BOOKBOT ============")
+    print(f"Analyzing book found at {book_path}...")
+    print("----------- Word Count ----------")
+    print(f"Found {count_words} total words" )   
+    print("--------- Character Count -------")
+    for char_dict in sorted_list:
+        char = char_dict["char"]
+        count = char_dict["count"]
+        print(f"{char}: {count}")
+    print("============= END ===============")
+
 
 main()

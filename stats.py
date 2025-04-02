@@ -15,7 +15,8 @@ def get_num_letters(text):
 def dictionary_to_list(totals):
     list_of_dictionaries = []
     for char, count in totals.items():
-        list_of_dictionaries.append({"char": char, "count": count})
+        if char.isalpha():
+            list_of_dictionaries.append({"char": char, "count": count})
     
     def sort_on(dict):
         return dict["count"]
